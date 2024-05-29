@@ -61,6 +61,17 @@ public class Main {
         return null;
     }
 
+    public static void imagenesMascotas(String foto) {
+        switch (foto) {
+            case "1":
+                System.out.print("Hola");
+                break;
+
+            default:
+                break;
+        }
+    }
+
     public static void filtrarRaza(ArrayList<Mascota> mascotas, String raza) {
         int i = 0;
         while (i < mascotas.size()) {
