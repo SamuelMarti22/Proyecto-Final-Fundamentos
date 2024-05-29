@@ -67,4 +67,7 @@ public class Adoptante {
         this.ListaMascotas.add(mascota);
     }
 
+    public ArrayList<String> getMascotas() {
+        return this.ListaMascotas;
+    }
 }

@@ -1,11 +1,11 @@
 public class Transaccion {
     private String mascota;
-    private String dueño;
+    private String dueno;
     private String refugio;
 
-    public Transaccion(String mascota, String dueño, String refugio) {
+    public Transaccion(String mascota, String dueno, String refugio) {
         this.mascota = mascota;
-        this.dueño = dueño;
+        this.dueno = dueno;
         this.refugio = refugio;
     }
 
@@ -14,8 +14,8 @@ public class Transaccion {
         return mascota;
     }
 
-    public String getDueño() {
-        return dueño;
+    public String getDueno() {
+        return dueno;
     }
 
     public String getRefugio() {
@@ -27,8 +27,8 @@ public class Transaccion {
         this.mascota = mascota;
     }
 
-    public void setDueño(String dueño) {
-        this.dueño = dueño;
+    public void setDueno(String dueno) {
+        this.dueno = dueno;
     }
 
     public void setRefugio(String refugio) {

@@ -12,7 +12,8 @@ public class BaseDeDatos {
     public BaseDeDatos(String nombreArchivo) {
         this.nombreArchivo = nombreArchivo;
     }
-    //Devuelve una lista con todas las mascotas en la base de datos
+
+    // Devuelve una lista con todas las mascotas en la base de datos
     public ArrayList<Mascota> obtenerMascotas() {
         ArrayList<Mascota> mascotas = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -28,7 +29,8 @@ public class BaseDeDatos {
         }
         return mascotas;
     }
-    //Devuelve una lista con todos los adoptantes en la base de datos
+
+    // Devuelve una lista con todos los adoptantes en la base de datos
     public ArrayList<Adoptante> obtenerAdoptantes() {
         ArrayList<Adoptante> adoptantes = new ArrayList<>();
         BaseDeDatos datosTransacciones = new BaseDeDatos("./archivos/transacciones.txt");
@@ -39,9 +41,11 @@ public class BaseDeDatos {
                 ArrayList<String> mascotas = new ArrayList<>();
                 String[] partes = linea.split(",");
                 for (int i = 0; i < mascotasProv.size(); i++) {
-                    if (mascotasProv.get(i).getDueño().equals(partes[0]));
+                    if (mascotasProv.get(i).getDueno().equals(partes[0]))
+                        ;
                     mascotas.add(mascotasProv.get(i).getMascota());
-                    //Acá busca las mascotas que fueron adoptadas, y agrega las que esten a nombre del adoptante
+                    // Acá busca las mascotas que fueron adoptadas, y agrega las que esten a nombre
+                    // del adoptante
                 }
                 Adoptante adoptante = new Adoptante(partes[0], Integer.parseInt(partes[1]), partes[2], partes[3],
                         partes[4], mascotas);
@@ -52,7 +56,8 @@ public class BaseDeDatos {
         }
         return adoptantes;
     }
-    //Devuelve una lista con todas las trasnsacciones en la base de datos
+
+    // Devuelve una lista con todas las trasnsacciones en la base de datos
     public ArrayList<Transaccion> obtenerTransacciones() {
         ArrayList<Transaccion> transacciones = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -67,7 +72,8 @@ public class BaseDeDatos {
         }
         return transacciones;
     }
-    //Devuelve una lista con todas las solicitudes
+
+    // Devuelve una lista con todas las solicitudes
     public ArrayList<Solicitud> obtenerSolicitudes() {
         ArrayList<Solicitud> solicitudes = new ArrayList<>();
         try (BufferedReader lector = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -82,7 +88,8 @@ public class BaseDeDatos {
         }
         return solicitudes;
     }
-    //Devuelve una lista con todos los refugios
+
+    // Devuelve una lista con todos los refugios
     public ArrayList<Refugio> obtenerRefugios() {
         ArrayList<Refugio> refugios = new ArrayList<Refugio>();
         try (BufferedReader lector = new BufferedReader(new FileReader(nombreArchivo))) {
@@ -106,7 +113,8 @@ public class BaseDeDatos {
         }
         return refugios;
     }
-    //Filtra las mascotas según el refugio
+
+    // Filtra las mascotas según el refugio
     public ArrayList<Mascota> filtrarMascotas(ArrayList<Mascota> mascotas, String nombreRefugio) {
         int i = 0;
         ArrayList<Mascota> mascotasFiltradas = new ArrayList<Mascota>();
@@ -118,7 +126,8 @@ public class BaseDeDatos {
         }
         return mascotasFiltradas;
     }
-    //Filtra las transacciones según el refugio
+
+    // Filtra las transacciones según el refugio
     public ArrayList<Transaccion> filtrarTransacciones(ArrayList<Transaccion> transacciones, String nombreRefugio) {
         int i = 0;
         ArrayList<Transaccion> transaccionesFiltradas = new ArrayList<Transaccion>();
@@ -130,7 +139,8 @@ public class BaseDeDatos {
         }
         return transaccionesFiltradas;
     }
-    //Filtra los Adoptantes según el refugio al que solicitaron adoptar
+
+    // Filtra los Adoptantes según el refugio al que solicitaron adoptar
     public ArrayList<Solicitud> filtrarAdoptantes(ArrayList<Solicitud> solicitudes, String nombreRefugio) {
         ArrayList<Solicitud> solicitudesN = new ArrayList<>();
         for (int i = 0; i < solicitudes.size(); i++) {
@@ -140,7 +150,8 @@ public class BaseDeDatos {
         }
         return solicitudesN;
     }
-    //Agrega Mascotas a la base de datos
+
+    // Agrega Mascotas a la base de datos
     public void agregarMascota(Mascota mascota) {
         try (FileWriter writer = new FileWriter(nombreArchivo, true);
                 BufferedWriter bw = new BufferedWriter(writer);
@@ -151,7 +162,8 @@ public class BaseDeDatos {
             e.printStackTrace();
         }
     }
-    //Agrega refugios a la base de datos
+
+    // Agrega refugios a la base de datos
     public void agregarRefugio(Refugio refugio) {
         try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
             escritor.println(refugio.getNombre() + "," + refugio.getDireccion() + "," + refugio.getTelefono());
@@ -159,7 +171,8 @@ public class BaseDeDatos {
             e.printStackTrace();
         }
     }
-    //Agrega solicitudes a la base de datos
+
+    // Agrega solicitudes a la base de datos
     public void agregarSolicitud(Solicitud solicitud) {
         try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
             escritor.println(solicitud.getDueno() + "," + solicitud.getMascota() + "," + solicitud.getRefugio());
@@ -167,18 +180,21 @@ public class BaseDeDatos {
             e.printStackTrace();
         }
     }
-    //Agrega adoptantes a la base de datos
-    public void agregarAdoptante(Adoptante adoptante){
+
+    // Agrega adoptantes a la base de datos
+    public void agregarAdoptante(Adoptante adoptante) {
         try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
-            escritor.println(adoptante.getNombre() + "," + adoptante.getEdad() + "," + adoptante.getTelefono()+","+adoptante.getCorreo()+","+adoptante.getCapacidad());
+            escritor.println(adoptante.getNombre() + "," + adoptante.getEdad() + "," + adoptante.getTelefono() + ","
+                    + adoptante.getCorreo() + "," + adoptante.getCapacidad());
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    //Agrega trnasacciones a la base de datos
-    public void agregarTransaccion(Transaccion Transaccion){
+
+    // Agrega trnasacciones a la base de datos
+    public void agregarTransaccion(Transaccion Transaccion) {
         try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
-            escritor.println(Transaccion.getMascota() + "," + Transaccion.getDueño() + "," + Transaccion.getRefugio());
+            escritor.println(Transaccion.getMascota() + "," + Transaccion.getDueno() + "," + Transaccion.getRefugio());
         } catch (IOException e) {
             e.printStackTrace();
         }
