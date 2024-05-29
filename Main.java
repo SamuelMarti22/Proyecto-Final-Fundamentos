@@ -368,35 +368,35 @@ public class Main {
             System.out.print(
                     "1. Ingresar Mascotas \n2. Ver Mascotas \n3. Ver Solicitudes \n4. Hisotorial de Transacciones \n5. Ver registro de adoptantes \n6 Gestionar Solicitudes \7.Salir");
             System.out.print("Ingresa tu opcion: ");
-            int opcion = input.nextInt();
+            String opcion = input.nextLine();
 
-            while (opcion != 6) {
+            while (opcion != "6") {
                 switch (opcion) {
-                    case 1:
+                    case "1":
                         System.out.println("Ingresar mascotas");
                         agregarMascota();
                         break;
-                    case 2:
+                    case "2":
                         System.out.println("Ver mascotas");
                         mostrarMascotasRefugio();
                         break;
-                    case 3:
+                    case "3":
                         System.out.println("Ver solicitudes");
                         mostrarSolicitudes();
                         break;
-                    case 4:
+                    case "4":
                         System.out.println("Historial de transacciones");
                         mostrarHistorial();
                         break;
-                    case 5:
+                    case "5":
                         System.out.println("Ver registro de adoptantes");
                         mostrarAdoptantes();
                         break;
-                    case 6:
+                    case "6":
                         System.out.println("Gestionar Solicitudes");
                         gestionarSolicitudes();
                         break;
-                    case 7:
+                    case "7":
                         System.out.println("Salir");
                         break;
                     default:
@@ -404,7 +404,7 @@ public class Main {
                         break;
                 }
                 System.out.print("Ingresa tu opcion: ");
-                opcion = input.nextInt();
+                opcion = input.nextLine();
             }
         } else if (perfil.equals("2")) {
             System.out.println("Bienvenido al portal de Adoptantes");
@@ -467,7 +467,7 @@ public class Main {
                     case 4:
                         ArrayList<Mascota> mascotas = datosMascotas.obtenerMascotas();
                         System.out.println("Filtrar Informacion");
-                        System.out.println("Filtrar por: 1. Raza \n2. Sexo \n3. Edad ");
+                        System.out.println("Filtrar por: \n1. Raza \n2. Sexo \n3. Edad ");
                         System.out.print("Ingresa tu opcion: ");
                         int opcion2 = input.nextInt();
                         switch (opcion2) {
