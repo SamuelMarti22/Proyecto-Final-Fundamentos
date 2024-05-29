@@ -1,3 +1,2 @@
-Yago,lobo,12,Sano,Macho,:3,Muy simpatico y hermoso,El Rosario
-Yaga,lobo,12,Sano,Macho,:3,Muy simpatico y hermoso,El Rosario
-Ganya,Bull Terrier,45,Mas en la tumba que en vida,Hembra,>:c,Rarita,El Carmen
+Yago,lobo,12,Sano,Macho,1,Muy Lindo,El Rosario
+Ganya,Bull,45,Sana,Hembra,3,Lindita,El Carmen

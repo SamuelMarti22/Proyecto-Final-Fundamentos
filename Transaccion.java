@@ -3,9 +3,9 @@ public class Transaccion {
     private String dueno;
     private String refugio;
 
-    public Transaccion(String mascota, String dueno, String refugio) {
-        this.mascota = mascota;
+    public Transaccion(String dueno, String mascota, String refugio) {
         this.dueno = dueno;
+        this.mascota = mascota;
         this.refugio = refugio;
     }
 

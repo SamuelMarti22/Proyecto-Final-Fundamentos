@@ -17,9 +17,8 @@ public class Main {
     public static Refugio buscarRefugio(ArrayList<Refugio> refugios, String nombre) {
         int i = 0;
         while (i < refugios.size()) {
-            if (refugios.get(i).getNombre().equals(nombre)) {
+            if (refugios.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 Refugio refugio = refugios.get(i);
-                System.out.println("Si existe");
                 return refugio;
             } else {
                 i++;
@@ -30,13 +29,28 @@ public class Main {
 
     // Creación de función "buscarMascota_Refugio" encarga de recorrer la lista d
     // mascotas para buscar coincidencias de nombre dentro de ella para ingresar o
-    // no el
-    // refugio a la "base de datos"
+    // no el refugio a la "base de datos"
     public static String buscarMascota_Refugio(ArrayList<Mascota> mascotas, String nombre) {
         int i = 0;
         while (i < mascotas.size()) {
-            if (mascotas.get(i).getNombre().equals(nombre)) {
+            if (mascotas.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 return mascotas.get(i).getRefugio();
+            } else {
+                i++;
+            }
+        }
+        return null;
+    }
+
+    // Creación de función "buscarMascota_Refugio" encarga de recorrer la lista d
+    // mascotas para buscar coincidencias de nombre dentro de ella para ingresar o
+    // no el refugio a la "base de datos"
+    public static Mascota buscarMascota(ArrayList<Mascota> mascotas, String nombre) {
+        int i = 0;
+        while (i < mascotas.size()) {
+            if (mascotas.get(i).getNombre().equalsIgnoreCase(nombre)) {
+                Mascota mascota = mascotas.get(i);
+                return mascota;
             } else {
                 i++;
             }
@@ -50,9 +64,8 @@ public class Main {
     public static Adoptante buscarAdoptante(ArrayList<Adoptante> adoptantes, String nombre) {
         int i = 0;
         while (i < adoptantes.size()) {
-            if (adoptantes.get(i).getNombre().equals(nombre)) {
+            if (adoptantes.get(i).getNombre().equalsIgnoreCase(nombre)) {
                 Adoptante adoptante = adoptantes.get(i);
-                System.out.println("Si existe");
                 return adoptante;
             } else {
                 i++;
@@ -61,10 +74,67 @@ public class Main {
         return null;
     }
 
+    public static void imprimirAdoptante(Adoptante adoptante) {
+        System.out.println("Edad:" + adoptante.getEdad());
+        System.out.println("Correo:" + adoptante.getCorreo());
+        System.out.println("Telefono:" + adoptante.getTelefono());
+        System.out.println("Capacidad:" + adoptante.getCapacidad());
+    }
+
     public static void imagenesMascotas(String foto) {
         switch (foto) {
             case "1":
-                System.out.print("Hola");
+                System.out.println("   _                ");
+                System.out.println("  /  \\              ");
+                System.out.println(" /|oo \\             ");
+                System.out.println("(_|  /_)            ");
+                System.out.println("  `@/  \\    ");
+                System.out.println("  |     \\   \\\\      ");
+                System.out.println("   \\||   \\   ))     ");
+                System.out.println("   |||\\ /  \\//      ");
+                System.out.println(" _//|| _\\   /      ");
+                System.out.println("(_/(_|(____/        ");
+                break;
+            case "2":
+                System.out.println("                            __");
+                System.out.println("     ,                    ,\" e`--o");
+                System.out.println("    ((                   (  | __,'");
+                System.out.println("     \\~----------------' \\_;/");
+                System.out.println("hjw  (                      /");
+                System.out.println("     /) ._______________.  )");
+                System.out.println("    (( (               (( (");
+                System.out.println("     ``-'               ``-'");
+                break;
+
+            case "3":
+                System.out.println("           _ ");
+                System.out.println("      /\\,_/\\| ");
+                System.out.println("      /==_ ( ");
+                System.out.println("     (Y_.) /       /// ");
+                System.out.println("      U ) (__,_____) ) ");
+                System.out.println("        )'   >     `/ ");
+                System.out.println("        |._  _____  | ");
+                System.out.println("        | | (    \\| ( ");
+                System.out.println("        | | |    || | ");
+                System.out.println("   ,,-. ),)_/ ., ))_/,,.-,_ ");
+                System.out.println("   b'ger   . ,-/,_ ");
+                break;
+            case "4":
+                System.out.println("                    |\\|\\");
+                System.out.println("                   ..    \\       .");
+                System.out.println("                 o--     \\\\    / @)");
+                System.out.println("                  v__///\\\\\\\\__/ @");
+                System.out.println("                    {           }");
+                System.out.println("                     {  } \\\\\\{  }");
+                System.out.println("                     <_|      <_|");
+                System.out.println("               bw");
+                break;
+            case "5":
+                System.out.println("   /\\_/\\  \n");
+                System.out.println("  / o o \\ \n");
+                System.out.println(" (   \"   )\n");
+                System.out.println("  \\~(*)~/ \n");
+                System.out.println("   `-^-'  \n");
                 break;
 
             default:
@@ -75,7 +145,9 @@ public class Main {
     public static void filtrarRaza(ArrayList<Mascota> mascotas, String raza) {
         int i = 0;
         while (i < mascotas.size()) {
-            if (mascotas.get(i).getRaza().equals(raza)) {
+            if (mascotas.get(i).getRaza().equalsIgnoreCase(raza)) {
+                System.out.println("-----------------------------------------");
+                imagenesMascotas(mascotas.get(i).getFoto());
                 System.out.println("Nombre: " + mascotas.get(i).getNombre());
                 System.out.println("Raza: " + mascotas.get(i).getRaza());
                 System.out.println("Edad: " + mascotas.get(i).getEdad());
@@ -92,6 +164,8 @@ public class Main {
         int i = 0;
         while (i < mascotas.size()) {
             if (mascotas.get(i).getGenero().equals(sexo)) {
+                System.out.println("-----------------------------------------");
+                imagenesMascotas(mascotas.get(i).getFoto());
                 System.out.println("Nombre: " + mascotas.get(i).getNombre());
                 System.out.println("Raza: " + mascotas.get(i).getRaza());
                 System.out.println("Edad: " + mascotas.get(i).getEdad());
@@ -108,6 +182,8 @@ public class Main {
         int i = 0;
         while (i < mascotas.size()) {
             if (mascotas.get(i).getEdad() == edad) {
+                System.out.println("-----------------------------------------");
+                imagenesMascotas(mascotas.get(i).getFoto());
                 System.out.println("Nombre: " + mascotas.get(i).getNombre());
                 System.out.println("Raza: " + mascotas.get(i).getRaza());
                 System.out.println("Edad: " + mascotas.get(i).getEdad());
@@ -126,21 +202,27 @@ public class Main {
         int i = 0;
 
         while (i < refugios.size()) {
+            System.out.println("-----------------------------------------");
             System.out.println("En el refugio: " + refugios.get(i).getNombre() + ", con direccion: "
                     + refugios.get(i).getDireccion() + " y telefono:  " + refugios.get(i).getTelefono());
             int a = 0;
-            while (a < refugios.get(i).getNumeroMascotas()) {
+            if (refugios.get(i).getNumeroMascotas() == 0) {
+                System.out.println("No hay mascotas en el refugio");
+            } else {
                 System.out.println("Tiene las siguientes mascotas:");
-                ArrayList<Mascota> mascotas = refugios.get(i).getMascotas();
-                System.out.println("Nombre: " + mascotas.get(a).getNombre());
-                System.out.println("Raza: " + mascotas.get(a).getRaza());
-                System.out.println("Edad: " + mascotas.get(a).getEdad());
-                System.out.println("Sexo: " + mascotas.get(a).getGenero());
-                System.out.println("Estado de salud: " + mascotas.get(a).getEstadoDeSalud());
-                System.out.println("Descripción: " + mascotas.get(a).getDescipcion());
-                a++;
+                while (a < refugios.get(i).getNumeroMascotas()) {
+                    System.out.println("-----------------------------------------");
+                    ArrayList<Mascota> mascotas = refugios.get(i).getMascotas();
+                    imagenesMascotas(mascotas.get(a).getFoto());
+                    System.out.println("Nombre: " + mascotas.get(a).getNombre());
+                    System.out.println("Raza: " + mascotas.get(a).getRaza());
+                    System.out.println("Edad: " + mascotas.get(a).getEdad());
+                    System.out.println("Sexo: " + mascotas.get(a).getGenero());
+                    System.out.println("Estado de salud: " + mascotas.get(a).getEstadoDeSalud());
+                    System.out.println("Descripción: " + mascotas.get(a).getDescipcion());
+                    a++;
+                }
             }
-
             a = 0;
             while (a < refugios.get(i).getNumeroTransacciones()) {
                 ArrayList<Transaccion> transacciones = refugios.get(i).getTransacciones();
@@ -242,6 +324,7 @@ public class Main {
         for (int i = 0; i < mascotas.size(); i++) {
             if (mascotas.get(i).getRefugio().equals(nombrePerfil)) {
                 System.out.println("-----------------------------------------");
+                imagenesMascotas(mascotas.get(i).getFoto());
                 System.out.println("Nombre: " + mascotas.get(i).getNombre());
                 System.out.println("Raza: " + mascotas.get(i).getRaza());
                 System.out.println("Edad: " + mascotas.get(i).getEdad());
@@ -265,35 +348,47 @@ public class Main {
 
     public static void gestionarSolicitudes() {
         ArrayList<Solicitud> solicitudes = baseSolicitudes.obtenerSolicitudes();
+        ArrayList<Adoptante> adoptantes = baseAdoptante.obtenerAdoptantes();
         for (int i = 0; i < solicitudes.size(); i++) {
+            solicitudes = baseSolicitudes.obtenerSolicitudes();
+            if(solicitudes.size()==0){
+                System.out.println("No hay solicitudes para gestionar");
+                break;
+            }
             if (solicitudes.get(i).getRefugio().equals(nombrePerfil)) {
                 System.out.println("-----------------------------------------");
                 System.out.println("Dueño: " + solicitudes.get(i).getDueno());
+                Adoptante adoptante = buscarAdoptante(adoptantes, solicitudes.get(i).getDueno());
+                imprimirAdoptante(adoptante);
                 System.out.println("Mascota: " + solicitudes.get(i).getMascota());
                 System.out.println("Gestion de Solicitudes:");
                 System.out.println("1. Aceptar solicitud \n2. Denegar Solicitud \n3. Salir");
-                System.out.println("Ingresar opcion");
-                int opcion3 = input.nextInt();
+                System.out.print("Ingresar opcion: ");
+                String opcion3 = input.nextLine();
                 switch (opcion3) {
-                    case 1:
+                    case "1":
                         System.out.println("La solicitud ha sido aceptada");
+                        Mascota mascota = buscarMascota(datosMascotas.obtenerMascotas(),
+                                solicitudes.get(i).getMascota());
                         Transaccion transaccionGestion = new Transaccion(solicitudes.get(i).getDueno(),
                                 solicitudes.get(i).getMascota(), solicitudes.get(i).getRefugio());
                         baseTransacciones.agregarTransaccion(transaccionGestion);
-                        // Funcion para eliminar una solicitd
+                        baseSolicitudes.eliminarSolicitud(solicitudes.get(i));
+                        datosMascotas.eliminarMascota(mascota);
                         i--;
                         break;
-                    case 2:
+                    case "2":
                         System.out.println("La solicitud ha sido denegada");
-                        // Funcion para eliminar una solicitd
+                        baseSolicitudes.eliminarSolicitud(solicitudes.get(i));
                         i--;
                         break;
-                    case 3:
+                    case "3":
                         System.out.println("Cerrar Gestion");
                         i = solicitudes.size() + 1;
                         break;
-
                     default:
+                        System.out.println("Opción no válida");
+                        i--;
                         break;
                 }
             }
@@ -337,7 +432,7 @@ public class Main {
         for (int i = 0; i < listaTransacciones.size(); i++) {
             if (listaTransacciones.get(i).getDueno().equals(nombrePerfil)) {
                 System.out.println("-----------------------------------------");
-                System.out.println("Mascota: " + listaTransacciones.get(i).getMascota() + " Estado: APROVADO");
+                System.out.println("Mascota: " + listaTransacciones.get(i).getMascota() + " Estado: APROBADO");
             }
         }
         System.out.println("Si hiciste una solicitud y no aparece se debe a que fue rechazada");
@@ -348,9 +443,18 @@ public class Main {
         System.out.println("Bienvenidos al portal de adopción de mascotas");
         System.out.println("Antes de ingresar, escoger tu perfil");
         System.out.print("1. Refugio      2. Adoptante:  Ingresa tu opcion: ");
-        String perfil = input.nextLine();
+        int perfilNum;
+        while (true) {
+            String perfil = input.nextLine();
+            if (esNumero(perfil) == true) {
+                perfilNum = Integer.parseInt(perfil);
+                break;
+            } else {
+                System.out.println("No es un numero");
+            }
+        }
 
-        if (perfil.equals("1")) {
+        if (perfilNum == 1) {
             System.out.println("Bienvenido al portal de refugios");
             System.out.print("Para continuar ingresa el nombre del refugio: ");
             String nombre = input.nextLine();
@@ -375,13 +479,13 @@ public class Main {
                 System.out.println("Ya se encuentra registrado, continuar...");
                 nombrePerfil = nombre;
             }
-            System.out.println("Menu");
-            System.out.print(
-                    "1. Ingresar Mascotas \n2. Ver Mascotas \n3. Ver Solicitudes \n4. Hisotorial de Transacciones \n5. Ver registro de adoptantes \n6 Gestionar Solicitudes \7.Salir");
-            System.out.print("Ingresa tu opcion: ");
-            String opcion = input.nextLine();
-
+            String opcion = "";
             while (opcion != "6") {
+                System.out.println("Menu");
+                System.out.println(
+                        "1. Ingresar Mascotas \n2. Ver Mascotas \n3. Ver Solicitudes \n4. Hisotorial de Transacciones \n5. Ver registro de adoptantes \n6 Gestionar Solicitudes \7.Salir");
+                System.out.print("Ingresa tu opcion: ");
+                opcion = input.nextLine();
                 switch (opcion) {
                     case "1":
                         System.out.println("Ingresar mascotas");
@@ -414,10 +518,8 @@ public class Main {
                         System.out.println("Opcion no valida");
                         break;
                 }
-                System.out.print("Ingresa tu opcion: ");
-                opcion = input.nextLine();
             }
-        } else if (perfil.equals("2")) {
+        } else if (perfilNum == 2) {
             System.out.println("Bienvenido al portal de Adoptantes");
             System.out.print("Para continuar ingresa el nombre su nombre: ");
             String nombre = input.nextLine();
@@ -454,47 +556,47 @@ public class Main {
                 System.out.println("Ya se encuentra registrado, continuar...");
                 nombrePerfil = nombre;
             }
-
-            System.out.println("Menu");
-            System.out.print(
-                    "1. Ver Mascotas de todos los refugios \n2. Enviar Solicitud \n3. Estado Solicitud\n4. Filtrar Informacion \n5. Ver tus mascotas \n6. Salir");
-            System.out.print("Ingresa tu opcion: ");
-            int opcion = input.nextInt();
-            while (opcion != 6) {
+            String opcion = "";
+            while (opcion != "6") {
+                System.out.println("Menu");
+                System.out.println(
+                        "1. Ver Mascotas de todos los refugios \n2. Enviar Solicitud \n3. Estado Solicitud\n4. Filtrar Informacion \n5. Ver tus mascotas \n6. Salir");
+                System.out.print("Ingresa tu opcion: ");
+                opcion = input.nextLine();
                 switch (opcion) {
-                    case 1:
+                    case "1":
                         System.out.println("Ver mascotas");
                         ArrayList<Refugio> refugios = baseRefugios.obtenerRefugios();
                         imprimirRefugios(refugios);
                         break;
-                    case 2:
+                    case "2":
                         System.out.println("Enviar Solicitud");
                         agregarSolicitud();
                         break;
-                    case 3:
+                    case "3":
                         System.out.println("Estado solicitudes");
                         mostrarSolicitudesAdoptante();
                         break;
-                    case 4:
+                    case "4":
                         ArrayList<Mascota> mascotas = datosMascotas.obtenerMascotas();
                         System.out.println("Filtrar Informacion");
                         System.out.println("Filtrar por: \n1. Raza \n2. Sexo \n3. Edad ");
                         System.out.print("Ingresa tu opcion: ");
-                        int opcion2 = input.nextInt();
+                        String opcion2 = input.nextLine();
                         switch (opcion2) {
-                            case 1:
+                            case "1":
                                 System.out.println("Ingresar la raza a filtrar: ");
                                 String raza = input.nextLine();
                                 System.out.println("Tras filtar por Raza, este es el resultado: ");
                                 filtrarRaza(mascotas, raza);
                                 break;
-                            case 2:
+                            case "2":
                                 System.out.println("Ingresar la sexo a filtrar (Macho,Hembra): ");
                                 String sexo = input.nextLine();
                                 System.out.println("Tras filtar por sexo, este es el resultado: ");
                                 filtrarSexo(mascotas, sexo);
                                 break;
-                            case 3:
+                            case "3":
                                 System.out.println("Ingresar la edad a filtrar: ");
                                 int edadNum;
                                 while (true) {
@@ -510,19 +612,17 @@ public class Main {
                                 filtrarEdad(mascotas, edadNum);
                         }
                         break;
-                    case 5:
+                    case "5":
                         System.out.println("Ver tus mascotas");
                         mostrarMascotasAdoptantes();
                         break;
-                    case 6:
+                    case "6":
                         System.out.println("Salir");
                         break;
                     default:
                         System.out.println("Opcion no valida");
                         break;
                 }
-                System.out.print("Ingresa tu opcion: ");
-                opcion = input.nextInt();
             }
         } else {
             System.out.println("Opcion no valida");

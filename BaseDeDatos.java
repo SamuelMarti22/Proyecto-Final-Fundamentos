@@ -1,9 +1,4 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 public class BaseDeDatos {
@@ -157,7 +152,8 @@ public class BaseDeDatos {
                 BufferedWriter bw = new BufferedWriter(writer);
                 PrintWriter out = new PrintWriter(bw)) {
             out.println(mascota.getNombre() + "," + mascota.getRaza() + "," + mascota.getEdad() + ","
-                    + mascota.getEstadoDeSalud() + "," + mascota.getGenero() + "," + mascota.getFoto());
+                    + mascota.getEstadoDeSalud() + "," + mascota.getGenero() + "," + mascota.getFoto() + ","
+                    + mascota.getDescipcion() + "," + mascota.getRefugio());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -194,9 +190,73 @@ public class BaseDeDatos {
     // Agrega trnasacciones a la base de datos
     public void agregarTransaccion(Transaccion Transaccion) {
         try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
-            escritor.println(Transaccion.getMascota() + "," + Transaccion.getDueno() + "," + Transaccion.getRefugio());
+            escritor.println(Transaccion.getDueno() + "-" + Transaccion.getMascota() + "-" + Transaccion.getRefugio());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    // Elimina las solicitudes de la base de datos
+    public void eliminarSolicitud(Solicitud solicitud) {
+        String lineaBorrar = solicitud.getDueno() + "," + solicitud.getMascota() + "," + solicitud.getRefugio();
+        File archivo = new File(nombreArchivo);
+        File tempFile = new File(archivo.getParent() + "temp_" + archivo.getName());
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
+                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                // Si la línea actual no es la solicitud a eliminar, escribirla en el archivo
+                // temporal
+                if (!linea.trim().equals(lineaBorrar)) {
+                    writer.println(linea);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Borrar el archivo original
+        if (!archivo.delete()) {
+            System.out.println("No se pudo borrar el archivo original");
+            return;
+        }
+
+        // Renombrar el archivo temporal con el nombre del archivo original
+        if (!tempFile.renameTo(archivo)) {
+            System.out.println("No se pudo renombrar el archivo temporal");
+        }
+    }
+
+    public void eliminarMascota(Mascota mascota) {
+        String lineaBorrar = mascota.getNombre() + "," + mascota.getRaza() + "," + mascota.getEdad() + ","
+                + mascota.getEstadoDeSalud() + "," + mascota.getGenero() + "," + mascota.getFoto()+","+mascota.getDescipcion()+","+mascota.getRefugio();
+        File archivo = new File(nombreArchivo);
+        File tempFile = new File(archivo.getParent() + "temp_" + archivo.getName());
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
+                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                // Si la línea actual no es la solicitud a eliminar, escribirla en el archivo
+                // temporal
+                if (!linea.trim().equals(lineaBorrar)) {
+                    writer.println(linea);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Borrar el archivo original
+        if (!archivo.delete()) {
+            System.out.println("No se pudo borrar el archivo original");
+            return;
+        }
+
+        // Renombrar el archivo temporal con el nombre del archivo original
+        if (!tempFile.renameTo(archivo)) {
+            System.out.println("No se pudo renombrar el archivo temporal");
         }
     }
 }
