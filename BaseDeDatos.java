@@ -159,4 +159,12 @@ public class BaseDeDatos {
             e.printStackTrace();
         }
     }
+
+    public void agregarSolicitud(Solicitud solicitud) {
+        try (PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(nombreArchivo, true)))) {
+            escritor.println(solicitud.getDueno() + "," + solicitud.getMascota() + "," + solicitud.getRefugio());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -22,10 +22,6 @@ public class Main {
         return null;
     }
 
-    public static void agregarRefugio() {
-
-    }
-
     public static void imprimirRefugios(ArrayList<Refugio> refugios, String nombre) {
         int i = 0;
 
@@ -65,15 +61,29 @@ public class Main {
         int perfil = input.nextInt();
 
         if (perfil == 1) {
-            System.out.println("Bienvenido al portal de refucios");
-            // System.out.println("Para continuar ingresa el nombre del refugio: ");
+            System.out.println("Bienvenido al portal de refugios");
+            System.out.println("Para continuar ingresa el nombre del refugio: ");
             String nombre = input.nextLine();
             BaseDeDatos baseRefugios = new BaseDeDatos("./archivos/refugios.txt");
             ArrayList<Refugio> refugios = baseRefugios.obtenerRefugios();
             imprimirRefugios(refugios, nombre);
             Refugio refugio = buscarRefugio(refugios, nombre);
             if (refugio == null) {
-                System.out.print("Ingresar información del refugio");
+                ArrayList<Mascota> mascotas = new ArrayList<Mascota>();
+                ArrayList<Solicitud> adoptantes = new ArrayList<Solicitud>();
+                ArrayList<Transaccion> transacciones = new ArrayList<Transaccion>();
+                System.out.println("Ingresar información del refugio");
+                System.out.print("Nombre: ");
+                String nombreRefugio = input.nextLine();
+                System.out.print("Dirección: ");
+                String direccion = input.nextLine();
+                System.out.print("Telefono: ");
+                String telefono = input.nextLine();
+                Refugio refugioInsert = new Refugio(nombreRefugio, direccion, telefono, mascotas, adoptantes,
+                        transacciones);
+                baseRefugios.agregarRefugio(refugioInsert);
+            } else {
+                System.out.println("Ya se encuentra registrado, continuar...");
             }
 
         }
