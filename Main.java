@@ -481,10 +481,10 @@ public class Main {
                 nombrePerfil = nombre;
             }
             String opcion = "";
-            while (opcion != "6") {
+            while (!(opcion.equals("7"))) {
                 System.out.println("Menu");
                 System.out.println(
-                        "1. Ingresar Mascotas \n2. Ver Mascotas \n3. Ver Solicitudes \n4. Hisotorial de Transacciones \n5. Ver registro de adoptantes \n6 Gestionar Solicitudes \7.Salir");
+                        "1. Ingresar Mascotas \n2. Ver Mascotas \n3. Ver Solicitudes \n4. Hisotorial de Transacciones \n5. Ver registro de adoptantes \n6 Gestionar Solicitudes \n7.Salir");
                 System.out.print("Ingresa tu opcion: ");
                 opcion = input.nextLine();
                 switch (opcion) {
@@ -558,7 +558,7 @@ public class Main {
                 nombrePerfil = nombre;
             }
             String opcion = "";
-            while (opcion != "6") {
+            while (!(opcion.equals("6"))) {
                 System.out.println("Menu");
                 System.out.println(
                         "1. Ver Mascotas de todos los refugios \n2. Enviar Solicitud \n3. Estado Solicitud\n4. Filtrar Informacion \n5. Ver tus mascotas \n6. Salir");
