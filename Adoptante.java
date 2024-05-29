@@ -7,14 +7,14 @@ public class Adoptante {
     private String telefono;
     private String correo;
     private String capacidad;
-    private ArrayList<String> ListaMascotas;
+    private ArrayList<String> ListaMascotas;// Lista de las mascotas que tiene adoptadas cada adoptante
 
-    public Adoptante(String nombre, int edad, String telefono, String corre, String capacidad,
+    public Adoptante(String nombre, int edad, String telefono, String correo, String capacidad,
             ArrayList<String> ListaMascota) {
         this.nombre = nombre;
         this.edad = edad;
         this.telefono = telefono;
-        this.correo = corre;
+        this.correo = correo;
         this.capacidad = capacidad;
         this.ListaMascotas = ListaMascota;
     }
@@ -59,7 +59,7 @@ public class Adoptante {
         return this.correo;
     }
 
-    public String capacidad() {
+    public String getCapacidad() {
         return this.capacidad;
     }
 

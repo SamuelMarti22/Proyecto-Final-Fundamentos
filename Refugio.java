@@ -7,7 +7,6 @@ public class Refugio {
     private ArrayList<Mascota> mascotas;
     private ArrayList<Solicitud> solicitudesAdoptantes;
     private ArrayList<Transaccion> transacciones;
-    private int numeroMascotas;
 
     // Constructor
     public Refugio(String nombre, String direccion, String telefono, ArrayList<Mascota> mascotas,
@@ -23,10 +22,6 @@ public class Refugio {
     // Getters
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getDireccion() {
@@ -53,16 +48,21 @@ public class Refugio {
         return transacciones.size();
     }
 
+    public ArrayList<Transaccion> getTransacciones() {
+        return transacciones;
+    }
+
+    // Setters
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public ArrayList<Transaccion> getTransacciones() {
-        return transacciones;
     }
 
     public void setMascotas(ArrayList<Mascota> mascotas) {

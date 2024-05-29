@@ -9,6 +9,7 @@ public class Transaccion {
         this.refugio = refugio;
     }
 
+    // Getters
     public String getMascota() {
         return mascota;
     }
@@ -21,7 +22,7 @@ public class Transaccion {
         return refugio;
     }
 
-
+    // Setters
     public void setMascota(String mascota) {
         this.mascota = mascota;
     }
