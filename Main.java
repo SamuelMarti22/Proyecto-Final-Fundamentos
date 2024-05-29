@@ -411,8 +411,9 @@ public class Main {
         ArrayList<Adoptante> adoptantes = baseAdoptante.obtenerAdoptantes();
         for (int i = 0; i < adoptantes.size(); i++) {
             if (adoptantes.get(i).getNombre().equals(nombrePerfil)) {
-                System.out.println("Estas son tus mascotas");
+                System.out.println("Estas son tus mascotas:");
                 for (int j = 0; j < adoptantes.get(i).getMascotas().size(); j++) {
+                    System.out.println("-----------------------------------------");
                     System.out.println(adoptantes.get(j).getMascotas().get(j));
                 }
             }
