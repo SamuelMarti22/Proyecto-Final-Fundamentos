@@ -13,7 +13,7 @@ public class Main {
         while (i < refugios.size()) {
             if (refugios.get(i).getNombre().equals(nombre)) {
                 Refugio refugio = refugios.get(i);
-                System.err.println("Si existe");
+                System.out.println("Si existe");
                 return refugio;
             } else {
                 i++;
@@ -22,7 +22,11 @@ public class Main {
         return null;
     }
 
-    public static void imprimirRefugios(ArrayList<Refugio> refugios) {
+    public static void agregarRefugio() {
+
+    }
+
+    public static void imprimirRefugios(ArrayList<Refugio> refugios, String nombre) {
         int i = 0;
 
         while (i < refugios.size()) {
@@ -37,8 +41,20 @@ public class Main {
                         + mascotas.get(a).getDescipcion());
                 a++;
             }
+
+            a = 0;
+            while (a < refugios.get(i).getNumeroTransacciones()) {
+                ArrayList<Transaccion> transacciones = refugios.get(i).getTransacciones();
+                System.out.println(transacciones.get(a).getDueño() + "," + transacciones.get(a).getMascota());
+                a++;
+            }
+
             i++;
         }
+    }
+
+    public static void ingresarMascota() {
+
     }
 
     public static void main(String[] args) {
@@ -54,8 +70,11 @@ public class Main {
             String nombre = input.nextLine();
             BaseDeDatos baseRefugios = new BaseDeDatos("./archivos/refugios.txt");
             ArrayList<Refugio> refugios = baseRefugios.obtenerRefugios();
-            imprimirRefugios(refugios);
+            imprimirRefugios(refugios, nombre);
             Refugio refugio = buscarRefugio(refugios, nombre);
+            if (refugio == null) {
+                System.out.print("Ingresar información del refugio");
+            }
 
         }
     }
