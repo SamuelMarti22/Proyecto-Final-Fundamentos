@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+//HECHO POR LAURA ANDREA CASTRILLÓN FAJARDO Y SAMUEL MARTÍNEZ ARTEAGA
 public class Main {
 
     public static Scanner input = new Scanner(System.in);
@@ -73,14 +73,14 @@ public class Main {
         }
         return null;
     }
-
+    //Función para imprimir la información de los adoptantes
     public static void imprimirAdoptante(Adoptante adoptante) {
         System.out.println("Edad:" + adoptante.getEdad());
         System.out.println("Correo:" + adoptante.getCorreo());
         System.out.println("Telefono:" + adoptante.getTelefono());
         System.out.println("Capacidad:" + adoptante.getCapacidad());
     }
-
+    //Función para guardar y mostrar la foto de las mascotas en código ASCCI
     public static void imagenesMascotas(String foto) {
         switch (foto) {
             case "1":
@@ -141,7 +141,7 @@ public class Main {
                 break;
         }
     }
-
+    //Función para filtrar las mascotas por su raza
     public static void filtrarRaza(ArrayList<Mascota> mascotas, String raza) {
         int i = 0;
         while (i < mascotas.size()) {
@@ -159,7 +159,7 @@ public class Main {
             i++;
         }
     }
-
+    //Función para filtrar las mascotas por su sexo (macho o hembra)
     public static void filtrarSexo(ArrayList<Mascota> mascotas, String sexo) {
         int i = 0;
         while (i < mascotas.size()) {
@@ -177,7 +177,7 @@ public class Main {
             i++;
         }
     }
-
+    //Función para filtrar las mascotas por su edad
     public static void filtrarEdad(ArrayList<Mascota> mascotas, int edad) {
         int i = 0;
         while (i < mascotas.size()) {
@@ -200,7 +200,6 @@ public class Main {
     // refugio e imprimir su informacipon (Atributos)
     public static void imprimirRefugios(ArrayList<Refugio> refugios) {
         int i = 0;
-
         while (i < refugios.size()) {
             System.out.println("-----------------------------------------");
             System.out.println("En el refugio: " + refugios.get(i).getNombre() + ", con direccion: "
@@ -229,11 +228,10 @@ public class Main {
                 System.out.println(transacciones.get(a).getDueno() + "," + transacciones.get(a).getMascota());
                 a++;
             }
-
             i++;
         }
     }
-
+    //Función para agregar una mascota y sus datos a la base de datos
     public static void agregarMascota() {
         ArrayList<Mascota> listaMascotas = datosMascotas.obtenerMascotas();
         System.out.println("Necesitamos más información de nuestro amigo peludo");
@@ -277,7 +275,7 @@ public class Main {
                 fotoMascota, descripcionMascota, nombrePerfil);
         datosMascotas.agregarMascota(mascota);
     }
-
+    //Función para agregar solicitudes a la base de datos
     public static void agregarSolicitud() {
         System.out.println("Para realizar la solicitud necesitamos algunos datos...");
         System.out.println("Nombre de la mascota: ");
@@ -289,13 +287,15 @@ public class Main {
                 String nombreRefugio = buscarMascota_Refugio(listaMascotas, nombreMascota);
                 Solicitud solicitudInsert = new Solicitud(nombrePerfil, nombreMascota, nombreRefugio);
                 baseSolicitudes.agregarSolicitud(solicitudInsert);
+                System.out.println("Tu solicitud ha sido enviada con éxito");
                 break;
             } else {
                 System.out.println("No existe una mascota con ese nombre, por favor ingresa otro nombre");
             }
         }
-    }
 
+    }
+    //Función para confirmar si un input es un número
     public static boolean esNumero(String cadena) {
         boolean resultado;
         try {
@@ -306,7 +306,7 @@ public class Main {
         }
         return resultado;
     }
-
+    //Función para mostrar el historial de transacciones
     public static void mostrarHistorial() {
         ArrayList<Transaccion> historial = baseTransacciones.obtenerTransacciones();
         for (int i = 0; i < historial.size(); i++) {
@@ -317,7 +317,7 @@ public class Main {
             }
         }
     }
-
+    //Funcion para mostrar las mascotas de cada refugio
     public static void mostrarMascotasRefugio() {
         ArrayList<Mascota> mascotas = datosMascotas.obtenerMascotas();
         System.out.println("Tiene las siguientes mascotas:");
@@ -334,7 +334,7 @@ public class Main {
             }
         }
     }
-
+    //Función para mostrar las solicitudes de cada refugio
     public static void mostrarSolicitudes() {
         ArrayList<Solicitud> solicitudes = baseSolicitudes.obtenerSolicitudes();
         for (int i = 0; i < solicitudes.size(); i++) {
@@ -345,7 +345,7 @@ public class Main {
             }
         }
     }
-
+    //Función para que los refugios gestionen las solicitudes (aceptar o rechazar)
     public static void gestionarSolicitudes() {
         ArrayList<Solicitud> solicitudes = baseSolicitudes.obtenerSolicitudes();
         ArrayList<Adoptante> adoptantes = baseAdoptante.obtenerAdoptantes();
@@ -394,7 +394,7 @@ public class Main {
             }
         }
     }
-
+    //Función para mostrar todos los adoptantes registrados
     public static void mostrarAdoptantes() {
         ArrayList<Adoptante> adoptantes = baseAdoptante.obtenerAdoptantes();
         for (int i = 0; i < adoptantes.size(); i++) {
@@ -406,7 +406,7 @@ public class Main {
             System.out.println("Capacidad: " + adoptantes.get(i).getCapacidad());
         }
     }
-
+    //Función para mostrar las mascotas que tiene el adoptante 
     public static void mostrarMascotasAdoptantes() {
         ArrayList<Adoptante> adoptantes = baseAdoptante.obtenerAdoptantes();
         for (int i = 0; i < adoptantes.size(); i++) {
@@ -414,12 +414,12 @@ public class Main {
                 System.out.println("Estas son tus mascotas:");
                 for (int j = 0; j < adoptantes.get(i).getMascotas().size(); j++) {
                     System.out.println("-----------------------------------------");
-                    System.out.println(adoptantes.get(j).getMascotas().get(j));
+                    System.out.println(adoptantes.get(i).getMascotas().get(j));
                 }
             }
         }
     }
-
+    //Muestra las solicitudes que tiene cada adoptante y su estado
     public static void mostrarSolicitudesAdoptante() {
         ArrayList<Transaccion> listaTransacciones = baseTransacciones.obtenerTransacciones();
         ArrayList<Solicitud> listaSolicitud = baseSolicitudes.obtenerSolicitudes();
@@ -438,7 +438,7 @@ public class Main {
         }
         System.out.println("Si hiciste una solicitud y no aparece se debe a que fue rechazada");
     }
-
+//Función principal donde se ejecuta todo
     public static void main(String[] args) {
 
         System.out.println("Bienvenidos al portal de adopción de mascotas");

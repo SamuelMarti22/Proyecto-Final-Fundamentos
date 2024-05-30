@@ -36,11 +36,11 @@ public class BaseDeDatos {
                 ArrayList<String> mascotas = new ArrayList<>();
                 String[] partes = linea.split(",");
                 for (int i = 0; i < mascotasProv.size(); i++) {
-                    if (mascotasProv.get(i).getDueno().equals(partes[0]))
-                        ;
-                    mascotas.add(mascotasProv.get(i).getMascota());
-                    // Acá busca las mascotas que fueron adoptadas, y agrega las que esten a nombre
-                    // del adoptante
+                    if (mascotasProv.get(i).getDueno().equals(partes[0])) {
+                        mascotas.add(mascotasProv.get(i).getMascota());
+                        // Acá busca las mascotas que fueron adoptadas, y agrega las que esten a nombre
+                        // del adoptante
+                    }
                 }
                 Adoptante adoptante = new Adoptante(partes[0], Integer.parseInt(partes[1]), partes[2], partes[3],
                         partes[4], mascotas);
@@ -202,59 +202,53 @@ public class BaseDeDatos {
         File archivo = new File(nombreArchivo);
         File tempFile = new File(archivo.getParent() + "temp_" + archivo.getName());
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
-                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
+        try (BufferedReader lector = new BufferedReader(new FileReader(archivo));
+                PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
             String linea;
-            while ((linea = reader.readLine()) != null) {
-                // Si la línea actual no es la solicitud a eliminar, escribirla en el archivo
-                // temporal
+            while ((linea = lector.readLine()) != null) {
                 if (!linea.trim().equals(lineaBorrar)) {
-                    writer.println(linea);
+                    escritor.println(linea);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Borrar el archivo original
         if (!archivo.delete()) {
             System.out.println("No se pudo borrar el archivo original");
             return;
         }
 
-        // Renombrar el archivo temporal con el nombre del archivo original
         if (!tempFile.renameTo(archivo)) {
             System.out.println("No se pudo renombrar el archivo temporal");
         }
     }
 
+    // Elimina las mascotas en la base de datos
     public void eliminarMascota(Mascota mascota) {
         String lineaBorrar = mascota.getNombre() + "," + mascota.getRaza() + "," + mascota.getEdad() + ","
-                + mascota.getEstadoDeSalud() + "," + mascota.getGenero() + "," + mascota.getFoto()+","+mascota.getDescipcion()+","+mascota.getRefugio();
+                + mascota.getEstadoDeSalud() + "," + mascota.getGenero() + "," + mascota.getFoto() + ","
+                + mascota.getDescipcion() + "," + mascota.getRefugio();
         File archivo = new File(nombreArchivo);
         File tempFile = new File(archivo.getParent() + "temp_" + archivo.getName());
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(archivo));
-                PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
+        try (BufferedReader lector = new BufferedReader(new FileReader(archivo));
+                PrintWriter escritor = new PrintWriter(new BufferedWriter(new FileWriter(tempFile)))) {
             String linea;
-            while ((linea = reader.readLine()) != null) {
-                // Si la línea actual no es la solicitud a eliminar, escribirla en el archivo
-                // temporal
+            while ((linea = lector.readLine()) != null) {
                 if (!linea.trim().equals(lineaBorrar)) {
-                    writer.println(linea);
+                    escritor.println(linea);
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // Borrar el archivo original
         if (!archivo.delete()) {
             System.out.println("No se pudo borrar el archivo original");
             return;
         }
 
-        // Renombrar el archivo temporal con el nombre del archivo original
         if (!tempFile.renameTo(archivo)) {
             System.out.println("No se pudo renombrar el archivo temporal");
         }

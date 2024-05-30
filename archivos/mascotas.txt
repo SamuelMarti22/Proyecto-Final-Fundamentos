@@ -1,2 +1,2 @@
-Yago,lobo,12,Sano,Macho,1,Muy Lindo,El Rosario
 Ganya,Bull,45,Sana,Hembra,3,Lindita,El Carmen
+Blanca,Doberman,32,Sana,Hembra,4,Muy bonita y activa,El Rosario
